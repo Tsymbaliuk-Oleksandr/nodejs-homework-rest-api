@@ -6,7 +6,7 @@ const { ctrlWrapper } = require('../../helpers')
 
 const { validationBody } = require('../../middlewares')
 
-const schemas = require('../../schemas/contact')
+const { schemas } = require('../../models/contact')
 
 const router = express.Router()
 
@@ -24,6 +24,12 @@ router.put(
   '/:id',
   validationBody(schemas.addSchema),
   ctrlWrapper(ctrl.updateContactById),
+)
+
+router.patch(
+  '/:id/favorite',
+  validationBody(schemas.updateFavoriteSchema),
+  ctrlWrapper(ctrl.updateFavotite),
 )
 
 router.delete('/:id', ctrlWrapper(ctrl.removeContact))
