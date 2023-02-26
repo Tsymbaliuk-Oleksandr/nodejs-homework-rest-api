@@ -1,5 +1,6 @@
 // Імпортуємо "bcryptjs"
 const bcrypt = require('bcryptjs')
+const gravatar = require('gravatar')
 const requestError = require('../../helpers/requestError')
 const { User } = require('../../models/user')
 
@@ -12,12 +13,15 @@ const register = async (req, res) => {
 
   // Хешуємо пароль "hashPassword"
   const hashPassword = await bcrypt.hash(password, 10)
+  const avatarURL = gravatar.url(email)
 
   const result = await User.create({
     email,
     password: hashPassword,
     subscription,
+    avatarURL,
   })
+
   res.status(201).json({
     name: result.name,
     email: result.email,
@@ -26,3 +30,6 @@ const register = async (req, res) => {
 }
 
 module.exports = register
+
+// 1:09:55
+// https://www.youtube.com/watch?v=sI9GhIC1Nq4
