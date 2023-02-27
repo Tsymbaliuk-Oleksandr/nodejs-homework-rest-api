@@ -9,6 +9,7 @@ const userSchema = Schema(
   {
     password: {
       type: String,
+      minlength: 6,
       required: [true, 'Set password for user'],
     },
     email: {
@@ -24,6 +25,10 @@ const userSchema = Schema(
     token: {
       type: String,
       default: '',
+    },
+    avatarURL: {
+      type: String,
+      required: true,
     },
   },
   { versionKey: false, timestamps: true },
