@@ -4,4 +4,11 @@ const ctrlWrapper = require('./ctrlWrapper')
 
 const handleSchemaValidationErrors = require('./handleSchemaValidationErrors')
 
-module.exports = { RequestError, ctrlWrapper, handleSchemaValidationErrors }
+const sendEmail = require('./sendEmail')
+
+module.exports = {
+  RequestError,
+  ctrlWrapper,
+  handleSchemaValidationErrors,
+  sendEmail,
+}

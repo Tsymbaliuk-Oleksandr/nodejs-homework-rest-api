@@ -16,6 +16,14 @@ router.post(
   ctrlWrapper(ctrl.register),
 )
 
+router.get('/verify/:verificationToken', ctrlWrapper(ctrl.verify))
+
+router.post(
+  '/verify',
+  validationBody(schemas.verifyEmailSchema),
+  ctrlWrapper(ctrl.resendEmail),
+)
+
 router.post(
   '/login',
   validationBody(schemas.loginSchema),
@@ -34,5 +42,3 @@ router.patch(
 )
 
 module.exports = router
-
-// 1:16:16
